@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Add New Book</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <h2>Add New Book</h2>
+
+    <form action="/books/saveBook" th:action="@{/books/saveBook}" th:object="${book}" method="post">
+        <label>Book Name</label>
+        <input type="text" th:field="*{name}"
+               placeholder="Book Name" class="form-control mb-4 col-4">
+
+        <label>Book Category</label>
+        <input type="text" th:field="*{category}"
+               placeholder="Book Category" class="form-control mb-4 col-4">
+
+        <label>Author </label>
+            <!--<select  id="author" name="author" th:field="*{author}" th:object="${authors}"  class="form-control mb-4 col-4">
+                <option th:each="auth : ${authors}" th:value="${auth}" th:text="${auth.getName()}" th:object="${authors}"/>
+            </select>-->
+        <input type="text" th:field="*{author}"
+               placeholder="Book Author" class="form-control mb-4 col-4">
+        <label>Available Copies</label>
+        <input type="text" th:field="*{availableCopies}"
+               placeholder="Available Copies" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2" id="saveBtn">Save Book</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/books}"> Back to Book List</a>
+</div>
+</body>
+</html>

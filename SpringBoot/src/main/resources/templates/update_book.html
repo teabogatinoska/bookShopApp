@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Edit Book</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Edit Book</h1>
+    <hr>
+
+    <form action="/books/saveBook" th:action="@{/books/saveBook}" th:object="${book}"
+          method="post">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="*{id}" />
+        <label>Book Name</label>
+        <input type="text" th:field="*{name}" class="form-control mb-4 col-4">
+
+        <label>Book Category</label>
+        <input type="text" th:field="*{category}" class="form-control mb-4 col-4">
+
+        <!--<label>Author</label>-->
+        <input type="hidden" th:field="*{author}" class="form-control mb-4 col-4">
+
+        <label>Available Copies</label>
+        <input type="text" th:field="*{availableCopies}" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Update Book</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/}"> Back to Books List</a>
+</div>
+</body>
+</html>
